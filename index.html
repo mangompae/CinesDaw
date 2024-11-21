@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Examen 27/11/2023</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="css/estilo.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Examen JS</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Provincias</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" id="importarProvincia">Importar</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Localidades</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" id="consultaLocalidad">Consulta</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Salas</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" id="nuevaSala">Nueva</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Peliculas</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" id="mosNuevaPelicula">Nueva</a></li>
+                        <li><a class="dropdown-item" href="#" id="conPelicula">Consulta</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Formulario Consulta Localidades-->
+
+    <div class="formularios" id="consultaLocalidades">
+        <form class="form-horizontal" name="frmConsultaLocalidades" id="frmConsultaLocalidades">
+            <fieldset>
+                <legend>Consulta Localidades</legend>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label" for="selectProvincias"
+                        style="margin-bottom:10px;">Provincia</label>
+                    <select class="form-select" id="selProvConLoc" name="selProvConLoc"></select>
+
+                </div>
+            </fieldset>
+            <br>
+            <div style="width: 300px; text-align: right;">
+                <button type="button" class="btn btn-primary" id="btnConsultarLocalidad">Consultar</button>
+            </div>
+        </form>
+    </div>
+
+    <!--Formulario Nueva Sala-->
+
+    <div class="formularios" id="salas">
+        <form class="form-horizontal" name="frmRegSala" id="frmRegSala">
+            <fieldset>
+                <legend>Nueva Sala</legend>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label" for="selectProvincias"
+                        style="margin-bottom:10px;">Provincia:</label>
+                    <select class="form-select" id="selProvRegSala" name="selProvConLoc">
+                        <option></option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label" for="selectLocalidad"
+                        style="margin-bottom:10px;">Localidad:</label>
+                    <select class="form-select" id="selLocRegSala" name="selLocRegSala" disabled>
+                        <option></option>
+                    </select>
+                </div>
+                <br>
+                <label class="col-xs-4 control-label" for="inputLocalidad" style="margin-bottom:10px;">Nombre:</label>
+                <input type="text" class="form-control" placeholder="sala" id="txtRegSala" name="txtRegSala" disabled>
+            </fieldset>
+            <br>
+            <div style="width: 300px; text-align: right;">
+                <button type="button" class="btn btn-primary" id="insertarSala">Registrar</button>
+            </div>
+        </form>
+    </div>
+
+    <!--Formulario Nueva Peliculas-->
+
+    <div class="formularios" id="nuevaPelicula">
+        <form class="form-horizontal" name="frmRegPeliculas" id="frmRegPeliculas">
+            <fieldset>
+                <legend>Nueva Pelicula</legend>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label" for="selectSala" style="margin-bottom:10px;">Sala:</label>
+                    <select class="form-select" id="selRegSala" name="selRegSala">
+                        <option></option>
+                    </select>
+                </div>
+                <br>
+                <label class="col-xs-4 control-label" for="inputPelicula" style="margin-bottom:10px;">Nombre:</label>
+                <input type="text" class="form-control" placeholder="Pelicula" id="txtRegPelicula"
+                    name="txtRegPelicula">
+                <br>
+                <label class="col-xs-4 control-label" for="inputSinopsis" style="margin-bottom:10px;">Sinopsis:</label>
+                <input type="text" class="form-control" placeholder="Descripción" id="txtRegSinopsis"
+                    name="txtRegSinopsis">
+            </fieldset>
+            <br>
+            <div style="width: 300px; text-align: right;">
+                <button type="button" class="btn btn-primary" id="insertarPelicula">Registrar</button>
+            </div>
+        </form>
+    </div>
+
+
+    <!--Formulario Consulta Peliculas-->
+
+    <div class="formularios" id="consultaPelicula">
+        <form class="form-horizontal" name="frmConPeliculas" id="frmConPeliculas">
+            <fieldset>
+                <legend>Consulta Peliculas</legend>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label" for="selectSala" style="margin-bottom:10px;">Sala:</label>
+                    <select class="form-select" id="selConSala" name="selConSala">
+                        <option></option>
+                    </select>
+                </div>
+            </fieldset>
+            <br>
+            <div style="width: 300px; text-align: right;">
+                <button type="button" class="btn btn-primary" id="consultarPelis"
+                    name="consultarPelis">Consultar</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="tablaPeliculas">
+
+    </div>
+
+    <!--Footer-->
+    <div class="mt-5 p-4 bg-dark text-white text-center">
+        <p>La inteligencia consiste no solo en el conocimiento, sino también en la destreza de aplicar los conocimientos
+            en la práctica</p>
+    </div>
+
+
+
+    <script type="text/javascript" src="js/codigo.js"></script>
+</body>
+
+</html>
